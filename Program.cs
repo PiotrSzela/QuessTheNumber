@@ -6,9 +6,11 @@ namespace QuessTheNumber
     {
         static void Main(string[] args)
         {
+        begin:
+            Console.ResetColor();
             Random random = new Random();
             int randomNumber = random.Next(1, 101);
-
+            
             Console.WriteLine("Quess the number from 1 to 100\nTry to do it in 5 steps or less");
 
             int howMuch = 0;
@@ -60,7 +62,21 @@ namespace QuessTheNumber
                     }
                 }
             } while (myNumber != randomNumber);
+            Console.Write(" Play again?\n Press y/n ");
+            playOrNot:
+            string yesOrNo = Console.ReadLine();
+            switch(yesOrNo)
+            {
+                case ("y"):
+                    goto begin;
+                case ("n"):
+                    break;
+                default:
+                    Console.Write("Press y/n");
+                    goto playOrNot;
 
+            }
+        
             Console.ResetColor();
             Console.ReadKey();
 
